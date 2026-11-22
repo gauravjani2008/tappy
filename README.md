@@ -31,7 +31,7 @@ The `REPORT_EMAIL` environment variable is no longer used at all now that each d
 2. Vercel will auto-add two environment variables to your project: `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` (or `KV_REST_API_URL` / `KV_REST_API_TOKEN` — if you see those names instead, just rename them to match, or edit `api/*.js` to use those names).
 
 ### 2. Create a Resend account (free, for sending the email)
-1. Sign up at https://resend.com (free tier: 3,000 emails/month) — use `gauravjani2008@gmail.com` to sign up, see note below
+1. Sign up at https://resend.com (free tier: 3,000 emails/month) — use `[Your email]` to sign up, see note below
 2. Go to **API Keys** → create one → copy it
 3. In Vercel → your project → **Settings → Environment Variables**, add:
    - `RESEND_API_KEY` = the key you copied
