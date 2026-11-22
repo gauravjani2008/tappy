@@ -31,7 +31,7 @@ The `REPORT_EMAIL` environment variable is no longer used at all now that each d
 2. Vercel will auto-add two environment variables to your project: `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` (or `KV_REST_API_URL` / `KV_REST_API_TOKEN` — if you see those names instead, just rename them to match, or edit `api/*.js` to use those names).
 
 ### 2. Create a Resend account (free, for sending the email)
-1. Sign up at https://resend.com (free tier: 3,000 emails/month) — use `[Your email]` to sign up, see note below
+1. Sign up at https://resend.com (free tier: 3,000 emails/month) — use `[Your Email]` to sign up, see note below
 2. Go to **API Keys** → create one → copy it
 3. In Vercel → your project → **Settings → Environment Variables**, add:
    - `RESEND_API_KEY` = the key you copied
@@ -48,6 +48,14 @@ Or drag the whole `tappy-vercel` folder into Vercel's dashboard (Add New → Pro
 
 ### 4. Test the email without waiting for month-end
 Visit `https://<your-app>.vercel.app/api/cron-report?force=1` in a browser — it'll loop through every device that has ever saved data and send each one their report immediately, so you can confirm it works. To test just your own device without emailing everyone else who's used the app, open your Settings sheet in the app, note that your device ID is stored in your browser's localStorage under the key `tappy_device_uid` (view it via your browser's dev tools), then visit `https://<your-app>.vercel.app/api/cron-report?force=1&uid=<that-id>`.
+
+## App icon / "Add to Home Screen"
+
+The project now includes a logo and full PWA icon set (`public/icon-*.png`, `apple-touch-icon.png`, `favicon.ico`, `manifest.webmanifest`), wired up in `index.html`'s `<head>`. Once deployed:
+- **iPhone (Safari):** open the site → Share → **Add to Home Screen** — it'll use the logo automatically, open full-screen with no browser bar, and show a black status bar.
+- **Android (Chrome):** open the site → menu → **Add to Home screen / Install app** — same deal, using the manifest.
+
+Want a different logo design? Send me a description (or an image to base it on) and I'll regenerate the icon files.
 
 ## Notes
 - The app still keeps a local copy in your phone's browser (works offline), and syncs to the cloud database in the background whenever it can reach the network.
